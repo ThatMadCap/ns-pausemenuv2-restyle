@@ -78,7 +78,7 @@ local function CreateCameraVehicle()
     CreateThread(function()
         while DoesCamExist(cam) do
             SetUseHiDof()
-            Wait(0)  
+            Wait(0)
         end
     end)
 end
@@ -96,20 +96,22 @@ local function GetOldESX()
 end
 
 local function PauseMenu()
-    if Config.Core == "QBCore" then 
+    if Config.Core == "QBCore" then
         local QBCore = exports['qb-core']:GetCoreObject()
         local PlayerData = QBCore.Functions.GetPlayerData()
         name = PlayerData.charinfo.firstname.." "..PlayerData.charinfo.lastname
-    elseif Config.Core == "ESX" then 
+    elseif Config.Core == "ESX" then
             ESX = exports["es_extended"]:getSharedObject()
         local PlayerData = ESX.GetPlayerData()
         name = PlayerData.firstName.." "..PlayerData.lastName
     elseif Config.Core == "OldESX" then
         Wait(10)
         GetOldESX()
+    elseif Config.Core == "Ox" then
+        name = Ox.GetPlayer().get('firstName') .. " " .. Ox.GetPlayer().get('lastName')
     end
     SetNuiFocus(true, true)
-    CreateCamera() 
+    CreateCamera()
     Wait(Config.EaseTime)
 
     local BoneCoords = GetPedBoneCoords(PlayerPedId(), 60309, -0.6, 0.0, 0.0)
@@ -136,7 +138,7 @@ local function CloseMenu()
 end
 
 CreateThread(function()
-    while true do 
+    while true do
         SetPauseMenuActive(false)
         Wait(0)
     end
@@ -144,7 +146,7 @@ end)
 
 CreateThread(function()
     DisableIdleCamera(true)
-    while true do 
+    while true do
         if IsControlJustPressed(0, 200) or IsControlJustPressed(0, 199) then
             if not IsPauseMenuActive() then
                 if not acik then
@@ -165,7 +167,6 @@ end)
 RegisterNUICallback('map', function(data, cb)
     menu = true
     CloseMenu()
---[[     Wait(100) ]]
     ActivateFrontendMenu(GetHashKey('FE_MENU_VERSION_MP_PAUSE'),0,-1)
     Wait(100)
     PauseMenuceptionGoDeeper(0)
@@ -187,8 +188,21 @@ RegisterNUICallback('settings', function(data, cb)
 end)
 
 RegisterNUICallback('logout', function(data, cb)
-    TriggerServerEvent("ns-pausemenuv2:quit")
-    cb('ok')
+    local alert = lib.alertDialog({
+        header = 'Quit',
+        content = 'Are you sure you want to quit?',
+        centered = true,
+        cancel = true,
+        labels = {
+            cancel = "Cancel",
+            confirm = "Quit the game"
+        }
+    })
+
+    if alert == "confirm" then
+        TriggerServerEvent("ns-pausemenuv2:quit")
+        cb('ok')
+    end
 end)
 
 RegisterCommand(Config.FixMenuCommand, function()
