@@ -1,4 +1,5 @@
 # ns-pausemenuv2
+![pausemenu-restyle](https://github.com/user-attachments/assets/4a447fdd-3e9f-4514-94ce-66ef40a712f8)
 
 MadCap edits:
 - Restyled
