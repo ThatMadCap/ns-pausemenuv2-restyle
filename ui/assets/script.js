@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const element = document.querySelector('.pausemenu');
     const tiltDeg = 2;
+    let menu = false;
     element.addEventListener('mousemove', ({ clientX, clientY }) => {
         const bcr = element.getBoundingClientRect();
         const rotX = ((clientY - bcr.top) / bcr.height) * tiltDeg;
@@ -27,14 +28,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const name = document.querySelector('.charactername'); 
             name.innerHTML = event.data.name;
             root.style.display = "block";
-
+            menu = true;
         }
     });
 
         document.addEventListener("keydown", (event) => {
         if (event.key === "Escape") {
             if (menu) {
-                fetch('https://ns-pausemenuv2/continue', {
+                fetch('https://ns-pausemenuv2-restyle/continue', {
                     method: 'POST',
                     body: JSON.stringify({})
                 })
@@ -51,39 +52,38 @@ document.addEventListener('DOMContentLoaded', () => {
             pauseMenu.style.top = `${event.data.y * window.innerHeight}px`;
         }
     });
-    
-    
 
     window.addEventListener('message', function(event) {
         if (event.data.type === "closemenu") {
             const root = document.querySelector('.root'); 
             root.style.display = "none";
+            menu = false;
         }
     });
 
     document.getElementById('continue-btn').addEventListener('click', () => {
-        fetch('https://ns-pausemenuv2/continue', {
+        fetch('https://ns-pausemenuv2-restyle/continue', {
             method: 'POST',
             body: JSON.stringify({})
         })
     });
 
     document.getElementById('map-btn').addEventListener('click', () => {
-        fetch('https://ns-pausemenuv2/map', {
+        fetch('https://ns-pausemenuv2-restyle/map', {
             method: 'POST',
             body: JSON.stringify({})
         })
     });
 
     document.getElementById('settings-btn').addEventListener('click', () => {
-        fetch('https://ns-pausemenuv2/settings', {
+        fetch('https://ns-pausemenuv2-restyle/settings', {
             method: 'POST',
             body: JSON.stringify({})
         })
     });
 
     document.getElementById('logout-btn').addEventListener('click', () => {
-        fetch('https://ns-pausemenuv2/logout', {
+        fetch('https://ns-pausemenuv2-restyle/logout', {
             method: 'POST',
             body: JSON.stringify({})
         })

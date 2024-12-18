@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap'); 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 body {
-    font-family: 'Roboto Mono';
-    color: white;
+    font-family: 'Montserrat';
+    color: #F2F2F2;
 }
 
 .root {
@@ -11,97 +11,105 @@ body {
 }
 
 .pausemenu {
-    width: 27vh;
+    width: 30vh;
+    height: fit-content;
     position: absolute;
-    transition: 0.1s;
+    transition: 0.3s;
     transform-style: flat;
+    padding: 1vh;
 }
 
 ::selection {
-    color: #16FF8F;
-  }
+    color: #2B78FC;
+    background: rgba(255, 255, 255, 0.1);
+}
 
 .pausemenu-leftside {
     float: left;
 }
 
-.leftside-triangle {
-    width: 0;
-    height: 0;
-    border-top: 1.5vh solid transparent;
-    border-right: 2.5vh solid #ffffff;
-    border-bottom: 1.5vh solid transparent;
-    position: relative;
-    top: 11.5vh;
-}
-
 .pausemenu-border {
     float: left;
-    width: 0.5vh;
-    height: 28.5vh;
-    background-color: #FFFFFF;
-    box-shadow: 0px 0px 20px 0px white;
+    width: 0.8vh;
+    height: 36vh;
+    border-radius: 10px;
+    background: linear-gradient(45deg, #FF007F, #007BFF);
     z-index: 5;
 }
 
 .pausemenu-rightside {
     float: right;
+    width: 25vh;
 }
 
 .rightside-charactername {
     display: flex;
-    text-align: center;
     align-items: center;
-    position: absolute;
-    top: -2vh;
+    padding: 3%;
+    margin-top: 2%;
+    border-style: solid;
+    border-width: 0.15rem;
+    border-color: #C1C1C1;
+    border-radius: 3px;
+    width: 100%;
+    box-sizing: border-box;
+    background: #171717E6;
 }
 
-.characternameicon {
-    margin-right: 8px;
-    color: #16FF8F;
-    text-shadow: 0 0 12px #16FF8F;
-}
+/* .characternameicon {
+    margin-right: 15px;
+    font-size: 2.2vh; 
+} */
 
 .charactername {
-    font-weight: 500
+    font-weight: 700;
+    color: #F2F2F2;
 }
 
 .rightside-buttons {
-    width: 22.6vh;
-    height: 21vh;
+    width: 25vh;
+    height: 22vh;
     z-index: 9;
+    margin-top: 2vh;
 }
 
 .button {
     position: relative;
-    color: black;
+    color: #F2F2F2;
     cursor: pointer;
     display: flex;
     text-align: center;
     align-items: center;
-    background: white;
     width: 100%;
-    height: 5vh;
-    margin-top: 1.4vh;
-    box-shadow: 0px 0px 20px 0px white;
-    border: 0.3vh solid #d6d6d6;
-    font-size: 2.4vh;
-    transition: 0.5s;
-    font-weight: 700;
+    box-sizing: border-box;
+    height: 5.5vh;
+    margin-top: 2%;
+    font-size: 2.5vh;
+    transition: 0.3s;
+    font-weight: 600;
+    z-index: 10;
+    text-transform: uppercase;
+    border-style: solid;
+    border-width: 0.15rem;
+    border-color: #C1C1C1;
+    border-radius: 3px;
+    background: linear-gradient(to right, rgba(23, 23, 23, 0.9), rgba(23, 23, 23, 0.9));
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.button-quit {
+    width: 50%;
+    height: 3.5vh;
+    font-size: 1.5vh;
+    transition: 0.3s;
     z-index: 10;
 }
 
 .button:hover {
-    box-shadow: 0px 0px 20px 0px #16FF8F;
-    border: 0.3vh solid #16FF8F;
-    background-color: #16FF8F;
-    background-image: var(--waves);
-    width: 105%;
-    font-size: 2.5vh;
-    transition: 0.5s;
-    z-index: 11; 
+    background: linear-gradient(to right, rgba(23, 23, 23, 0.9), rgba(36, 36, 36, 0.9));
 }
 
 .button-icon {
     margin: 0px 1vh 0px 2vh;
+    color: #F2F2F2;
 }
