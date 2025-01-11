@@ -16,7 +16,7 @@ Config.CamRot = { -- If you don't know much, DO NOT TOUCH!
     z = 1
 }
 
-Config.Core = "Ox" -- "QBCore", "ESX", "OldESX", "Ox"
+Config.Core = "Ox" -- "QBCore", "ESX", "Ox"
 
 Config.EaseTime = 1000 -- MilliSeconds
 
